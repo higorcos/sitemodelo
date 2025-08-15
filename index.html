@@ -3,50 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo de HTML 2 22</title>
+    <title>Nossa História 💕</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        header {
-            background: #007bff;
+            background-color: #1a1a1a;
             color: #fff;
-            padding: 15px;
+            margin: 0;
+            padding: 0;
             text-align: center;
         }
-        main {
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        img {
+            width: 100%;
+            border-radius: 15px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-top: 15px;
+        }
+        p {
+            font-size: 16px;
+        }
+        .cronometro {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #9b633be7;
+            font-weight: bold;
+        }
+        .spotify {
             margin-top: 20px;
         }
-        button {
-            background: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 4px;
+        /* Animação de corações */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
         }
-        button:hover {
-            background: #0056b3;
+        .heart {
+            position: absolute;
+            color: #9b633be7;
+            font-size: 24px;
+            animation: float 8s linear infinite;
+        }
+        .mensagem p {
+    font-size: 18px;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+.mensagem strong {
+    color: #ff4d6d;
+}
+
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Bem-vindo ao Exemplo HTML</h1>
-    </header>
-    <main>
-        <p>Este é um exemplo básico de página HTML com CSS embutido.</p>
-        <p>Clique no botão abaixo para ver uma ação com JavaScript:</p>
-        <button onclick="mostrarMensagem()">Clique aqui</button>
-    </main>
+    <div class="container">
+        <img src="/eu+isa.jpg" alt="Casal">
+      <h1>Isa & Bella 🤎 Higor</h1>
+<div class="cronometro" id="cronometro"></div>
+
+<div class="mensagem">
+    <p>Nossa história começou e nunca mais acabou... </p>
+    <p><em>Hoje é um novo passo !!!</em></p>
+    <p>Hoje às 17:00, pronta, usando o seu presente!!!</p>
+    <p>Estarei off, mas perto das 17h vai receber mais informações.</p>
+    <p>Te amo 🤎!!!</p>
+     <div class="spotify">
+            <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/track/7Jl757vT5eNqemc6PtY2dA?utm_source=generator"
+               
+                width="100%" height="80" frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"></iframe>
+        </div>
+</div>
+
+    </div>
+
+    <div class="hearts"></div>
+
     <script>
-        function mostrarMensagem() {
-            alert("Olá! Você clicou no botão.");
+        // Data inicial do relacionamento
+        const dataInicio = new Date("2025-01-11T21:00:00"); 
+
+        function atualizarCronometro() {
+            const agora = new Date();
+            const diferenca = agora - dataInicio;
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+            const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+            const segundos = Math.floor((diferenca / 1000) % 60);
+
+            document.getElementById("cronometro").textContent =
+                `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
         }
+        setInterval(atualizarCronometro, 1000);
+
+        // Animação de corações
+        const heartsContainer = document.querySelector('.hearts');
+        function criarCoracao() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 3) + 's';
+            heart.textContent = '🤎';
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+        setInterval(criarCoracao, 500);
     </script>
 </body>
 </html>
